@@ -9,7 +9,7 @@ const difficulty = BigNumber.from(
 
 describe("Mineable NFT", function () {
   it("Should mint a mineable NFT with a good nonce", async function () {
-    const contract = deploy(difficulty);
+    const contract = await deploy(difficulty);
 
     const [miner] = await ethers.getSigners();
     let nonce = BigNumber.from(0);
@@ -26,7 +26,7 @@ describe("Mineable NFT", function () {
   });
 
   it("Should fail to mint a mineable NFT with a bad nonce", async function () {
-    const contract = deploy(difficulty);
+    const contract = await deploy(difficulty);
 
     const [miner] = await ethers.getSigners();
     let nonce = BigNumber.from(0);
@@ -40,8 +40,10 @@ describe("Mineable NFT", function () {
     try {
       await contract.mint(nonce);
       throw Error("This error should not be reached.");
-    } catch (e) {
-      expect(e.message).to.equal("hi");
+    } catch (e: any) {
+      expect(e.message).to.equal(
+        "VM Exception while processing transaction: reverted with reason string 'Difficulty not met.'"
+      );
     }
   });
 });

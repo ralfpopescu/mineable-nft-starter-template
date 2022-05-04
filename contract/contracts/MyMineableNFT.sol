@@ -19,6 +19,6 @@ uint256 difficulty;
   function mint(uint96 nonce) external payable {
     uint256 token = encodeNonce(msg.sender, nonce);
     require(token < difficulty, "Difficulty not met.");
-    ERC721Enumerable._safeMint(msg.sender, token);
+    ERC721._safeMint(msg.sender, token);
   }
 }
