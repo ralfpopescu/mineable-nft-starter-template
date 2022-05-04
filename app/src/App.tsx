@@ -7,7 +7,7 @@ import { useMine, MiningStatus } from "./hooks/useMine";
 import { ConnectButton } from "./components/ConnectButton";
 
 const difficultyTarget = BigNumber.from(
-  "0x0000003fffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+  "0x00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
 );
 
 const getMiningStatus = (status: number) => {

@@ -13,14 +13,6 @@ import * as Contracts from ".";
 declare module "hardhat/types/runtime" {
   interface HardhatEthersHelpers extends HardhatEthersHelpersBase {
     getContractFactory(
-      name: "DummyMineablePunks",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.DummyMineablePunks__factory>;
-    getContractFactory(
-      name: "DummyMineableWords",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.DummyMineableWords__factory>;
-    getContractFactory(
       name: "ERC165",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.ERC165__factory>;
@@ -53,60 +45,14 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC721Receiver__factory>;
     getContractFactory(
-      name: "IMGear",
+      name: "MyMineableNFT",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IMGear__factory>;
-    getContractFactory(
-      name: "IMineablePunks",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IMineablePunks__factory>;
-    getContractFactory(
-      name: "IMineableWords",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IMineableWords__factory>;
-    getContractFactory(
-      name: "IRenderer",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IRenderer__factory>;
-    getContractFactory(
-      name: "IStats",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IStats__factory>;
-    getContractFactory(
-      name: "MGear",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.MGear__factory>;
-    getContractFactory(
-      name: "OldMGear",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.OldMGear__factory>;
-    getContractFactory(
-      name: "OldMGear",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.OldMGear__factory>;
+    ): Promise<Contracts.MyMineableNFT__factory>;
     getContractFactory(
       name: "Ownable",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Ownable__factory>;
-    getContractFactory(
-      name: "Renderer",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.Renderer__factory>;
-    getContractFactory(
-      name: "Stats",
-      signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.Stats__factory>;
 
-    getContractAt(
-      name: "DummyMineablePunks",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.DummyMineablePunks>;
-    getContractAt(
-      name: "DummyMineableWords",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.DummyMineableWords>;
     getContractAt(
       name: "ERC165",
       address: string,
@@ -148,60 +94,15 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC721Receiver>;
     getContractAt(
-      name: "IMGear",
+      name: "MyMineableNFT",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.IMGear>;
-    getContractAt(
-      name: "IMineablePunks",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.IMineablePunks>;
-    getContractAt(
-      name: "IMineableWords",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.IMineableWords>;
-    getContractAt(
-      name: "IRenderer",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.IRenderer>;
-    getContractAt(
-      name: "IStats",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.IStats>;
-    getContractAt(
-      name: "MGear",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.MGear>;
-    getContractAt(
-      name: "OldMGear",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.OldMGear>;
-    getContractAt(
-      name: "OldMGear",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.OldMGear>;
+    ): Promise<Contracts.MyMineableNFT>;
     getContractAt(
       name: "Ownable",
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.Ownable>;
-    getContractAt(
-      name: "Renderer",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.Renderer>;
-    getContractAt(
-      name: "Stats",
-      address: string,
-      signer?: ethers.Signer
-    ): Promise<Contracts.Stats>;
 
     // default types
     getContractFactory(

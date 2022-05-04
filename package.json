@@ -1,0 +1,27 @@
+{
+  "name": "mineable-nft-starter-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run --prefix contract test",
+    "run-local": "npm run --prefix contract run-local",
+    "deploy-local": "npm run --prefix contract deploy-local",
+    "start-app": "npm run --prefix app start",
+    "start": "concurrently \"npm run run-local\" \"wait-on http-get://localhost:8545 && npm run deploy-local && npm run start-app\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ralfpopescu/mineable-nft-starter-template.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ralfpopescu/mineable-nft-starter-template/issues"
+  },
+  "homepage": "https://github.com/ralfpopescu/mineable-nft-starter-template#readme",
+  "dependencies": {
+    "concurrently": "^7.1.0",
+    "wait-on": "^6.0.1"
+  }
+}

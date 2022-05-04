@@ -28,4 +28,4 @@ export const contractAddresses: Networks = {
 
 export const network = (process.env.REACT_APP_NETWORK as keyof Networks) || ("LOCAL" as "LOCAL");
 
-export const MINEABLEGEAR_ADDR = contractAddresses[network] || "";
+export const CONTRACT_ADDRESS = contractAddresses[network] || "";
