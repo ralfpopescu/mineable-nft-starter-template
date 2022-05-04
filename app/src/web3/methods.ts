@@ -1,5 +1,5 @@
 import { Web3Provider } from "@ethersproject/providers";
-import { MyMineableNFT__factory } from "./contracts/my-mineable-nft";
+import { MyMineableNFT__factory } from "./contract/typechain";
 import { BigNumber } from "ethers";
 import { CONTRACT_ADDRESS } from ".";
 

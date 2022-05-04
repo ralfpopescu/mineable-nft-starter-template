@@ -8,6 +8,8 @@
     "run-local": "npm run --prefix contract run-local",
     "deploy-local": "npm run --prefix contract deploy-local",
     "start-app": "npm run --prefix app start",
+    "copy-contract-typechain": "copyfiles \"./contract/typechain/*.ts\" ./app/src/web3",
+    "compile": "npm run --prefix contract compile && npm run copy-contract-typechain",
     "start": "concurrently \"npm run run-local\" \"wait-on http-get://localhost:8545 && npm run deploy-local && npm run start-app\""
   },
   "repository": {
@@ -22,6 +24,8 @@
   "homepage": "https://github.com/ralfpopescu/mineable-nft-starter-template#readme",
   "dependencies": {
     "concurrently": "^7.1.0",
+    "copyfiles": "^2.4.1",
+    "cpx": "^1.5.0",
     "wait-on": "^6.0.1"
   }
 }
