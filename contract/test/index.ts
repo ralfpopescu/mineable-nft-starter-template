@@ -63,6 +63,8 @@ describe("Mineable NFT", function () {
 
     // render new tokenId 0
     const rendered = await contract.render(0);
-    console.log(rendered);
+    expect(rendered).to.equal(
+      "data:application/json;base64,eyJuYW1lIjogIk15TWluZWFibGVORlQgIzAiLCAiZGVzY3JpcHRpb24iOiAiVGhpcyBpcyBvbiBvbi1jaGFpbiBtaW5lYWJsZSBORlQgYmFzZWQgb24gY29sb3JzLiIsICJpbWFnZSI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNVEF3SWlCb1pXbG5hSFE5SWpFd01DSWdkbWxsZDBKdmVEMGlNQ0F3SURFd01DQXhNREFpSUhodGJHNXpQU0pvZEhSd09pOHZkM2QzTG5jekxtOXlaeTh5TURBd0wzTjJaeUkrUEhKbFkzUWdlRDBpTUNJZ2VUMGlNQ0lnZDJsa2RHZzlJakV3TUNVaUlHaGxhV2RvZEQwaU1UQXdKU0lnWm1sc2JEMGlJMlF6TmpRMVlpSXZQand2YzNablBnPT0iIH0="
+    );
   });
 });
