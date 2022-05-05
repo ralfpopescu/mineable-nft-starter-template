@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "REPORT_GAS=true npx hardhat test",
+    "test": "REPORT_GAS=true npx hardhat compile && npx hardhat test",
     "run-local": "npx hardhat node",
     "deploy-local": "npx hardhat run --network localhost scripts/deploy.ts",
     "deploy-mainnet": "npx hardhat run --network mainnet scripts/deploy.ts",

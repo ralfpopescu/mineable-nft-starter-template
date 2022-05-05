@@ -2,6 +2,8 @@
 
 pragma solidity ^0.8.0;
 
+import "hardhat/console.sol";
+
 /**
  * @dev String operations.
  */
@@ -36,9 +38,9 @@ library Strings {
     /**
      * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation.
      */
-    function toHexString(uint256 value) internal pure returns (string memory) {
+    function toHexString(uint256 value) internal view returns (string memory) {
         if (value == 0) {
-            return "0x00";
+            return "0";
         }
         uint256 temp = value;
         uint256 length = 0;
@@ -52,15 +54,15 @@ library Strings {
     /**
      * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation with fixed length.
      */
-    function toHexString(uint256 value, uint256 length) internal pure returns (string memory) {
-        bytes memory buffer = new bytes(2 * length + 2);
-        buffer[0] = "0";
-        buffer[1] = "x";
-        for (uint256 i = 2 * length + 1; i > 1; --i) {
+    function toHexString(uint256 value, uint256 length) internal view returns (string memory) {
+        bytes memory buffer = new bytes(2 * length);
+        console.log(length);
+        for (uint256 i = 2 * length - 1; i > 0; --i) {
+            console.log(i);
             buffer[i] = _HEX_SYMBOLS[value & 0xf];
             value >>= 4;
         }
-        require(value == 0, "Strings: hex length insufficient");
+        buffer[0] = _HEX_SYMBOLS[value & 0xf];
         return string(buffer);
     }
 }

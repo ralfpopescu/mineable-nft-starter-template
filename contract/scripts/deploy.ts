@@ -55,6 +55,7 @@ async function main() {
   }
 
   console.log("MyMineableNFT deployed to:", myMineableNFT.address);
+  return myMineableNFT;
 }
 
 // We recommend this pattern to be able to use async/await everywhere

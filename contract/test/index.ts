@@ -46,4 +46,23 @@ describe("Mineable NFT", function () {
       );
     }
   });
+
+  it("Should render a color", async function () {
+    const contract = await deploy(difficulty);
+
+    const [miner] = await ethers.getSigners();
+    let nonce = BigNumber.from(0);
+    let minerHash = hash({ address: BigNumber.from(miner.address), nonce });
+
+    while (minerHash.gt(difficulty)) {
+      nonce = nonce.add(1);
+      minerHash = hash({ address: BigNumber.from(miner.address), nonce });
+    }
+
+    await contract.mint(nonce);
+
+    // render new tokenId 0
+    const rendered = await contract.render(0);
+    console.log(rendered);
+  });
 });
