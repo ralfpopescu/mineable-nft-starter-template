@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run --prefix contract test",
-    "run-local": "npm run --prefix contract run-local",
-    "deploy-local": "npm run --prefix contract deploy-local",
+    "local-node": "npm run --prefix contract run-local",
+    "deploy-local": "WRITE_ENV=true npm run --prefix contract deploy-local",
     "start-app": "npm run --prefix app start",
     "copy-contract-typechain": "copyfiles \"./contract/typechain/*.ts\" ./app/src/web3",
-    "compile": "npm run --prefix contract compile && npm run copy-contract-typechain",
-    "start": "concurrently \"npm run run-local\" \"wait-on http-get://localhost:8545 && npm run deploy-local && npm run start-app\""
+    "copy-env": "copyfiles \"./contract/.env.development\" ./app/.env.development",
+    "compile": "WRITE_ENV=true npm run --prefix contract compile && npm run copy-contract-typechain",
+    "start-all": "WRITE_ENV=true concurrently \"npm run run-local\" \"wait-on http-get://localhost:8545 && npm run deploy-local && npm run copy-env && npm run start-app\"",
+    "start": "npm run compile && npm run start-all"
   },
   "repository": {
     "type": "git",

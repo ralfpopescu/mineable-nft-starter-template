@@ -4,9 +4,11 @@ pragma solidity >=0.8.0 <0.9.0;
 
 import "./ERC721Enumerable.sol";
 import "./Ownable.sol";
+import "./Base64Encode.sol";
 
 contract MyMineableNFT is ERC721Enumerable, Ownable {
-uint256 difficulty;
+  uint256 public difficulty;
+  uint256[] public tokenIdToData;
 
   constructor(uint256 _difficulty) ERC721("MyMineableNFT", "MY_MINEABLE_NFT") Ownable() {
     difficulty = _difficulty;
@@ -17,8 +19,50 @@ uint256 difficulty;
   }
 
   function mint(uint96 nonce) external payable {
-    uint256 token = encodeNonce(msg.sender, nonce);
-    require(token < difficulty, "Difficulty not met.");
-    ERC721._safeMint(msg.sender, token);
+    uint256 tokenData = encodeNonce(msg.sender, nonce);
+    require(tokenData < difficulty, "Difficulty not met.");
+    ERC721._safeMint(msg.sender, tokenIdToData.length);
+    tokenIdToData.push(token);
   }
+
+  function render(uint256 tokenId) public view returns (string memory) {
+    string memory tokenData = tokenIdToData(uint256(tokenId));
+
+    return
+      string(
+        abi.encodePacked(
+          "data:application/json;base64,",
+          Base64Encode.encode(
+            bytes(
+              abi.encodePacked(
+                '{"name": "MyMineableNFT #',
+                tokenId,
+                '", "description": "This is on on-chain mineable NFT based on colors.", "image": "data:image/svg+xml;base64,',
+                Base64Encode.encode(
+                  bytes(
+                    abi.encodePacked(
+                      '<svg xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="100%" h="100%" fill="#',
+                      toHexString(tokenData & 0xFFFFFF),
+                      "</svg>"
+                    )
+                  )
+                ),
+                '" }'
+              )
+            )
+          )
+        )
+      );
+  }
+
+function tokenURI(uint256 tokenId)
+    public
+    view
+    override
+    returns (string memory)
+  {
+    require(ERC721._exists(tokenId), "token does not exist");
+    return render(tokenId);
+  }
+
 }

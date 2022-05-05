@@ -15,3 +15,16 @@ export const attemptMint = async function (lib: Web3Provider, nonce: BigNumber):
     throw e;
   }
 };
+
+export const getAllTokens = async function (lib: Web3Provider, nonce: BigNumber): Promise<string> {
+  const contract = MyMineableNFT__factory.connect(CONTRACT_ADDRESS, lib);
+  try {
+    const signer = lib.getSigner();
+    const tx = await contract.connect(signer).mint(nonce.toHexString());
+
+    return tx.hash;
+  } catch (e: any) {
+    console.log(e);
+    throw e;
+  }
+};
