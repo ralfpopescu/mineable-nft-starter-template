@@ -11,7 +11,7 @@
     "copy-contract-typechain": "copyfiles \"./contract/typechain/*.ts\" ./app/src/web3",
     "copy-env": "copyfiles \"./contract/.env.development\" ./app/.env.development",
     "compile": "WRITE_ENV=true npm run --prefix contract compile && npm run copy-contract-typechain",
-    "start-all": "WRITE_ENV=true concurrently \"npm run run-local\" \"wait-on http-get://localhost:8545 && npm run deploy-local && npm run copy-env && npm run start-app\"",
+    "start-all": "WRITE_ENV=true concurrently \"npm run local-node\" \"wait-on http-get://localhost:8545 && npm run deploy-local && npm run copy-env && npm run start-app\"",
     "start": "npm run compile && npm run start-all"
   },
   "repository": {
